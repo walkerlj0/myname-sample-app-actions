@@ -15,5 +15,3 @@ cypress/screenshots/
 cypress/videos/*
 cypress/videos
 package-lock.json
-__assets__/*
-__assets__/**
