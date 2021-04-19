@@ -6,8 +6,8 @@ on:
       - main
 
 env:
-  SAUCE_USERNAME: ${{secrects.SAUCE_USERNAME}}
-  SAUCE_ACCESS_KEY: ${{secrects.SAUCE_ACCESS_KEY}}
+  SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
+  SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
   SAUCECTL_VERSION: "0.37.0"
   BUILD_PREFIX: true
 
