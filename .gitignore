@@ -30,5 +30,8 @@ storybook-static
 .eslintcache
 
 cypress/videos/*
+cypress/videos/**
 cypress/videos
 package-lock.json
+__assets__/*
+__assets__/**
