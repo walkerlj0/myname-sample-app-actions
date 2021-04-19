@@ -28,3 +28,7 @@ screenshots
 storybook-static
 .tmp
 .eslintcache
+
+cypress/videos/*
+cypress/videos
+package-lock.json

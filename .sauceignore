@@ -13,3 +13,6 @@ node_modules/
 .hgignore
 .gitlab-ci.yml
 .npmrc
+cypress/videos/*
+cypress/videos
+package-lock.json
