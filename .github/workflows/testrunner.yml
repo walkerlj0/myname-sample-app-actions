@@ -28,5 +28,3 @@ jobs:
           CI: false
         run: |
           npm run build
-
-  test-web-app:
