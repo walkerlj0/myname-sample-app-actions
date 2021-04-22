@@ -47,18 +47,15 @@ jobs:
           CI: false
         run: |
           npm run build
-      - name: Start Sauce Connect
-        uses: saucelabs/sauce-connect-action@v1
-        with:
-          username: ${{ secrets.SAUCE_USERNAME }}
-          accessKey: ${{ secrets.SAUCE_ACCESS_KEY }}
-          tunnelIdentifier: proxy-tunnel-${{github.run_id}}
-          restUrl: https://eu-central-1.saucelabs.com/rest/v1
-          scVersion: 4.6.4
+      - name: Download & Use Sauce Connect Tunnel
+        run: |
+          set -e
+          curl -L -s https://saucelabs.com/downloads/sc-4.6.4-linux.tar.gz | sudo tar -xvz
+          sc-4.6.4-linux/bin/sc -u $SAUCE_USERNAME -k $SAUCE_ACCESS_KEY -i proxy-tunnel-$GITHUB_RUN_ID &
       - name: Install Saucectl
         run: |
           curl -L -s https://github.com/saucelabs/saucectl/releases/download/v${SAUCECTL_VERSION}/saucectl_${SAUCECTL_VERSION}_linux_64-bit.tar.gz | sudo tar -xvz -C /usr/bin/
       - name: Saucectl Run
         run: |
           cd build/ && python3 -m http.server 8000 &
-          saucectl run -c ./.sauce/config.yml --tunnel-id proxy-tunnel-${{github.run_id}} --test-env sauce
+          saucectl run -c ./.sauce/config.yml --tunnel-id proxy-tunnel-$GITHUB_RUN_ID --test-env sauce
